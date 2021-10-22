@@ -25,12 +25,13 @@
             if($customers->totalItems === 0) {
                 echo "<p>Não há clientes cadastrados</p>";
             } else {
-                echo "<table>";
+                echo "<table class=\"table table-striped table-hover\">";
                     echo "<thead>";
                         echo "<tr>";
                             echo "<th>Email</th>";
                             echo "<th>Nome</th>";
                             echo "<th>CPF/CNPJ</th>";
+                            echo "<th colspan=\"3\">Ações</th>";
                         echo "</tr>";
                     echo "</thead>";
                     echo "<tbody>";
@@ -40,6 +41,9 @@
                             echo "<td>" . $value->name . "</td>";
                             echo "<td>" . $value->email . "</td>";
                             echo "<td>" . $value->cpf_cnpj . "</td>";
+                            echo "<td><a href=\"view_client.php?id=" . $value->id . "\"><input type=\"button\" value=\"Visualizar\" class=\"btn btn-primary\" /></a></td>";
+                            echo "<td>&nbsp;</td>";
+                            echo "<td>&nbsp;</td>";
                         echo "</tr>";
                     }
 
@@ -60,25 +64,63 @@
                 </div>
                 <div class="modal-body">
                     <form action="save_client_iugu.php" method="post">
-                        <p>CPF/CNPJ: <input type="text" name="cpf_cnpj" value="" /></p>
-                        <p>Email: <input type="text" name="email" value="" /></p>
-                        <p>Nome: <input type="text" name="name" value="" /></p>
-                        <p>Detalhes: <input type="text" name="notes" value="" /></p>
-                        <p>DDD: <input type="text" name="phone_prefix" value="" /></p>
-                        <p>Telefone: <input type="text" name="phone" value="" /></p>
-                        <p>CEP: <input type="text" name="zip_code" value="" /></p>
-                        <p>Endereço: <input type="text" name="street" value="" /></p>
-                        <p>Número: <input type="text" name="number" value="" /></p>
-                        <p>Complemento: <input type="text" name="complement" value="" /></p>
-                        <p>Cidade: <input type="text" name="city" value="" /></p>
-                        <p>Estado: <input type="text" name="state" value="" /></p>
-                        <p>Distrito: <input type="text" name="district" value="" /></p>
-                        <p><input type="submit" value="Enviar" /></p>
+                        <div class="row">
+                            <div class="col-3">CPF/CNPJ</div>
+                            <div class="col"><input type="text" name="cpf_cnpj" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Email</div>
+                            <div class="col"><input type="text" name="email" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Nome</div>
+                            <div class="col"><input type="text" name="name" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Detalhes</div>
+                            <div class="col"><input type="text" name="notes" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">DDD</div>
+                            <div class="col"><input type="text" name="phone_prefix" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Telefone</div>
+                            <div class="col"><input type="text" name="phone" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">CEP</div>
+                            <div class="col"><input type="text" name="zip_code" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Endereço</div>
+                            <div class="col"><input type="text" name="street" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Número</div>
+                            <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Complemento</div>
+                            <div class="col"><input type="text" name="complement" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Cidade</div>
+                            <div class="col"><input type="text" name="city" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Estado</div>
+                            <div class="col"><input type="text" name="state" value="" class="form-control" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Distrito</div>
+                            <div class="col"><input type="text" name="district" value="" class="form-control" /></div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
                 </div>
                 </div>
             </div>
