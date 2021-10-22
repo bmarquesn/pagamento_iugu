@@ -23,26 +23,28 @@ $itens = [
 if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
     include('connect_iugu.php');
 
+    $id_client = $_POST['id_client'];
+
     /** cria-se o token de cobrança */
     $token = $iugu->paymentToken()->create([
-        "account_id" => "ID_DA_SUA_CONTA_IUGU",
-        "customer_id" => "ID_DO_CUSTOMER",
+        "account_id" => $codeIuguClient,
+        "customer_id" => $id_client,
         "method" => "credit_card",
         "data" => [
-            "number" => "4242424242424242",
-            "verification_value" => "648",
-            "first_name" => "João",
-            "last_name" => "das Neves",
-            "month" => "01",
-            "year" => "2023"
+            "number" => $_POST['id_client'],
+            "verification_value" => $_POST['id_client'],
+            "first_name" => $_POST['id_client'],
+            "last_name" => $_POST['id_client'],
+            "month" => $_POST['id_client'],
+            "year" => $_POST['id_client']
         ],
         "test" => true,
     ]);
 
     /** token criado, realiza-se o pagamento */
     $charge = $iugu->charges()->create([
-        "token" => "ID_DO_TOKEN_DE_PAGAMENTO_CRIADO",
-        "customer_id" => "ID_DO_CUSTOMER",
+        "token" => $token,
+        "customer_id" => $id_client,
         "total" => 10000,
         "payer" => [
             "cpf_cnpj" => "84752882000",
@@ -83,23 +85,23 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
                 </div>
                 <div class="row">
                     <div class="col">Código de Verificação</div>
-                    <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
+                    <div class="col"><input type="text" name="verification_value" value="" class="form-control" /></div>
                 </div>
                 <div class="row">
                     <div class="col">Nome</div>
-                    <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
+                    <div class="col"><input type="text" name="first_name" value="" class="form-control" /></div>
                 </div>
                 <div class="row">
                     <div class="col">Sobrenome</div>
-                    <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
+                    <div class="col"><input type="text" name="last_name" value="" class="form-control" /></div>
                 </div>
                 <div class="row">
                     <div class="col">Mês validade cartão</div>
-                    <div class="col-2"><input type="text" name="number" value="" class="form-control" /></div>
+                    <div class="col-2"><input type="text" name="month" value="" class="form-control" /></div>
                 </div>
                 <div class="row">
                     <div class="col">Ano validade cartão</div>
-                    <div class="col-2"><input type="text" name="number" value="" class="form-control" /></div>
+                    <div class="col-2"><input type="text" name="year" value="" class="form-control" /></div>
                 </div>
                 <h5>Selecione os ítens que desejar comprar</h5>
             <?php foreach($itens as $key => $value) { ?>
