@@ -31,7 +31,8 @@
                             echo "<th>Email</th>";
                             echo "<th>Nome</th>";
                             echo "<th>CPF/CNPJ</th>";
-                            echo "<th colspan=\"3\">Ações</th>";
+                            echo "<th>&nbsp;</th>";
+                            echo "<th colspan=\"2\">Pagar</th>";
                         echo "</tr>";
                     echo "</thead>";
                     echo "<tbody>";
@@ -42,8 +43,8 @@
                             echo "<td>" . $value->email . "</td>";
                             echo "<td>" . $value->cpf_cnpj . "</td>";
                             echo "<td><a href=\"view_client.php?id=" . $value->id . "\"><input type=\"button\" value=\"Visualizar\" class=\"btn btn-primary\" /></a></td>";
-                            echo "<td>&nbsp;</td>";
-                            echo "<td>&nbsp;</td>";
+                            echo "<td><a href=\"pay_credit_card.php?id=" . $value->id . "\" class=\"btn btn-success\">Cartão de Crédito</a></td>";
+                            echo "<td><a href=\"pay_bank_slip.php?id=" . $value->id . "\" class=\"btn btn-warning\">Boleto</a></td>";
                         echo "</tr>";
                     }
 
