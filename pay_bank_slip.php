@@ -75,8 +75,12 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
         ]
     ]);
 
-    var_dump($invoice);
-    exit;
+    if(isset($invoice->secure_url) && !empty($invoice->secure_url)) {
+        echo "<script type=\"text/javascript\">alert('Fatura enviada com sucesso para o Email cadastrado!');";
+        echo "window.location.assign('".$invoice->secure_url."')</script>";
+    } else {
+        echo "<script type=\"text/javascript\">alert('Erro ao gerar a fatura!');</script>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -130,7 +134,7 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
                     </div>
                 </div>
             <?php  } ?>
-                <p><input type="submit" value="Pagar" class="btn btn-primary" /></p>
+                <p><input type="submit" value="Gerar Boleto" class="btn btn-primary" /></p>
             </form>
             <hr />
         </div>
