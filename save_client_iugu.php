@@ -20,4 +20,9 @@ $customer = $iugu->customers()->create([
     ]*/
 ]);
 
-var_dump($customer);
+if(isset($customer->id) && !empty($customer->id)) {
+    echo "<script type=\"text/javascript\">alert('Cliente salvo com sucesso');";
+} else {
+    echo "alert('Erro ao salvar o cliente');";
+}
+echo "window.location.assign(\"index.php\");</script>";

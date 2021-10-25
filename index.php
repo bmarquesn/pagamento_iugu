@@ -18,6 +18,9 @@
                 <div class="col">
                     <input type="button" value="Inserir Cliente" class="btn btn-primary" id="btn_inserir_cliente" />
                 </div>
+                <div class="col">
+                    <a href="bills_generated.php"><input type="button" value="Boletos Gerados" class="btn btn-info" id="btn_inserir_cliente" /></a>
+                </div>
             </div>
             <?php
             $customers = $iugu->customers()->getList();
@@ -57,72 +60,72 @@
         <div class="modal fade" id="inserirClienteModal" tabindex="-1" aria-labelledby="inserirClienteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="inserirClienteModalLabel">Inserir Cliente</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="inserirClienteModalLabel">Inserir Cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <form action="save_client_iugu.php" method="post">
-                        <div class="row">
-                            <div class="col-3">CPF/CNPJ</div>
-                            <div class="col"><input type="text" name="cpf_cnpj" value="" class="form-control" /></div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-3">CPF/CNPJ</div>
+                                <div class="col"><input type="text" name="cpf_cnpj" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Email</div>
+                                <div class="col"><input type="text" name="email" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Nome</div>
+                                <div class="col"><input type="text" name="name" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Detalhes</div>
+                                <div class="col"><input type="text" name="notes" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">DDD</div>
+                                <div class="col"><input type="text" name="phone_prefix" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Telefone</div>
+                                <div class="col"><input type="text" name="phone" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">CEP</div>
+                                <div class="col"><input type="text" name="zip_code" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Endereço</div>
+                                <div class="col"><input type="text" name="street" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Número</div>
+                                <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Complemento</div>
+                                <div class="col"><input type="text" name="complement" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Cidade</div>
+                                <div class="col"><input type="text" name="city" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Estado</div>
+                                <div class="col"><input type="text" name="state" value="" class="form-control" /></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Distrito</div>
+                                <div class="col"><input type="text" name="district" value="" class="form-control" /></div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-3">Email</div>
-                            <div class="col"><input type="text" name="email" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Nome</div>
-                            <div class="col"><input type="text" name="name" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Detalhes</div>
-                            <div class="col"><input type="text" name="notes" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">DDD</div>
-                            <div class="col"><input type="text" name="phone_prefix" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Telefone</div>
-                            <div class="col"><input type="text" name="phone" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">CEP</div>
-                            <div class="col"><input type="text" name="zip_code" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Endereço</div>
-                            <div class="col"><input type="text" name="street" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Número</div>
-                            <div class="col"><input type="text" name="number" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Complemento</div>
-                            <div class="col"><input type="text" name="complement" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Cidade</div>
-                            <div class="col"><input type="text" name="city" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Estado</div>
-                            <div class="col"><input type="text" name="state" value="" class="form-control" /></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Distrito</div>
-                            <div class="col"><input type="text" name="district" value="" class="form-control" /></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <input type="submit" value="Salvar" class="btn btn-primary" />
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
-                </div>
                 </div>
             </div>
         </div>

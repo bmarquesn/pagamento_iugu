@@ -24,6 +24,7 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
     include('connect_iugu.php');
 
     $id_client = $_POST['id_client'];
+    //var_dump($_POST);die;
 
     /** cria-se o token de cobrança */
     $token = $iugu->paymentToken()->create([
@@ -31,37 +32,54 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
         "customer_id" => $id_client,
         "method" => "credit_card",
         "data" => [
-            "number" => $_POST['id_client'],
-            "verification_value" => $_POST['id_client'],
-            "first_name" => $_POST['id_client'],
-            "last_name" => $_POST['id_client'],
-            "month" => $_POST['id_client'],
-            "year" => $_POST['id_client']
+            "number" => $_POST['number'],
+            "verification_value" => $_POST['verification_value'],
+            "first_name" => $_POST['first_name'],
+            "last_name" => $_POST['last_name'],
+            "month" => $_POST['month'],
+            "year" => $_POST['year']
         ],
         "test" => true,
     ]);
+
+    /** obtem-se os dados do cliente */
+    $customer = $iugu->customers()->get([
+        "id" => $id_client
+    ]);
+
+    /** total de produtos selecionados */
+    $total = 0;
+    $array_itens = [];
+
+    foreach($_POST['produto_price'] as $key => $value) {
+        $total += $value;
+        $data_prod = [
+            'description' => $_POST['produto_name'][$key],
+            'quantity' => 1,
+            'price_cents' => $value
+        ];
+        array_push($array_itens, $data_prod);
+    }
+
 
     /** token criado, realiza-se o pagamento */
     $charge = $iugu->charges()->create([
         "token" => $token,
         "customer_id" => $id_client,
-        "total" => 10000,
+        "total" => (int)$total,
         "payer" => [
-            "cpf_cnpj" => "84752882000",
-            "name" => "João das Neves",
+            "cpf_cnpj" => $customer->cpf_cnpj,
+            "name" => $customer->name,
             "address" => [
-                "zip_code" => "72917210",
-                "number" => "100"
+                "zip_code" => $customer->zip_code,
+                "number" => $customer->number
             ]
         ],
-        "items" => [
-            [
-                "description" => "Descrição do item 1",
-                "quantity" => 1,
-                "price_cents" => 10000
-            ]
-        ]
+        "items" => $array_itens
     ]);
+
+    var_dump($charge);
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -106,7 +124,10 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
                 <h5>Selecione os ítens que desejar comprar</h5>
             <?php foreach($itens as $key => $value) { ?>
                 <div class="row">
-                    <div class="col-1"><input type="checkbox" name="produto[]" value="<?php echo $value['description']; ?>" id="<?php echo "prod_" . $value['id']; ?>" /></div>
+                    <div class="col-1">
+                        <input type="checkbox" name="produto_price[]" value="<?php echo $value['price_cents']; ?>" id="<?php echo "prod_" . $value['id']; ?>" />
+                        <input type="hidden" name="produto_name[]" value="<?php echo $value['description']; ?>" />
+                    </div>
                     <div class="col">
                         <label for="<?php echo "prod_" . $value['id']; ?>">
                             <?php
@@ -116,7 +137,7 @@ if(isset($_POST['id_client']) && !empty($_POST['id_client'])) {
                     </div>
                 </div>
             <?php  } ?>
-            <p><input type="submit" value="Pagar" class="btn btn-primary" /></p>
+                <p><input type="submit" value="Pagar" class="btn btn-primary" /></p>
             </form>
             <hr />
         </div>
