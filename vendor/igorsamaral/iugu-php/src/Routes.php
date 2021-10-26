@@ -73,4 +73,22 @@ class Routes
 
         return $anonymous;
     }
+
+    /**
+     * @return \Iugu\Anonymous
+     */
+    public static function plans()
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->base = static function () {
+            return 'plans';
+        };
+
+        $anonymous->details = static function ($id) {
+            return "plans/$id";
+        };
+
+        return $anonymous;
+    }
 }
