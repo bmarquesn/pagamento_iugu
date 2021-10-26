@@ -52,6 +52,7 @@
                 echo "</table>";
             }
             ?>
+            <p><a href="index.php" class="btn btn-secondary">Voltar</a></p>
             <hr />
         </div>
         <div class="modal fade" id="inserirPlanoModal" tabindex="-1" aria-labelledby="inserirPlanoModalLabel" aria-hidden="true">
