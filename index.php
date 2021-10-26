@@ -1,4 +1,25 @@
-<?php include('connect_iugu.php'); ?>
+<?php
+include('connect_iugu.php');
+/**
+ * Olá, boa tarde
+ * Estou desenvolvendo uma API em PHP de comunicação com a plataforma Iugu... já consegui fazer o pagamento por cartão de crédito e boleto... mas não consegui cadastrar um pagamento recorrente...
+ * Qual a sintaxe PHP que preciso usar para fazer um pagamento recorrente?
+ * O email da responsável pela conta da empresa ai na Iugu é cristina.justo@energygroup.com.br
+ *  Olá, peço desculpas por manter você esperando. Seu atendimento está aguardando na fila. Deixe uma mensagem que irei responder o mais rápido possível.
+Olá, boa tarde
+Estou desenvolvendo uma API em PHP de comunicação com a plataforma Iugu... já consegui fazer o pagamento por cartão de crédito e boleto... mas não consegui cadastrar um pagamento recorrente...
+Qual a sintaxe PHP que preciso usar para fazer um pagamento recorrente?
+O email da responsável pela conta da empresa ai na Iugu é cristina.justo@energygroup.com.br
+Cleyton S. entrou no chat
+Cleyton S.
+Olá Bruno Energy, boa tarde! Tudo bem?
+Para você fazer cobranças recorrentes você precisa criar cobranças recorrentes através da chamada:  https://dev.iugu.com/reference/criar-assinatura
+Caso queira deixar o cartão do cliente salvo para cobrar de forma automático as cobranças, só utilizar a chamada:  https://dev.iugu.com/reference/criar-forma-de-pagamento
+Para criar assinaturas é obrigatório ter planos? Pelo que entendi é necessário ter planos para pagamentos sem ser com cartão de crédito... certo?
+Cleyton S.
+Qualquer cobrança recorrente é preciso criar um plano, independente qual vai ser a forma de pagamento, tanto faz se cartão, pix ou boleto, mas o plano será obrigatório criar
+ */
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
