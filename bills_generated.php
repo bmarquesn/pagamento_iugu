@@ -46,6 +46,7 @@
                 echo "</table>";
             }
             ?>
+            <p><a href="index.php" class="btn btn-secondary">Voltar</a></p>
             <hr />
         </div>
         <script src="assets/js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>

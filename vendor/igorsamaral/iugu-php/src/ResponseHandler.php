@@ -53,12 +53,14 @@ class ResponseHandler
 
         $errors = [];
 
+        //var_dump($jsonError->errors);die;
         foreach ($jsonError->errors as $param => $error) {
             array_push($errors, [
                     "param" => $param,
                     "message" => $error[0],
             ]);
         }
+        //var_dump($errors);die;
 
         return new IuguException(
             $response->getStatusCode(),

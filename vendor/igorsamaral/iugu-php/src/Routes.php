@@ -91,4 +91,22 @@ class Routes
 
         return $anonymous;
     }
+
+    /**
+     * @return \Iugu\Anonymous
+     */
+    public static function subscriptions()
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->base = static function () {
+            return 'subscriptions';
+        };
+
+        $anonymous->details = static function ($id) {
+            return "subscriptions/$id";
+        };
+
+        return $anonymous;
+    }
 }

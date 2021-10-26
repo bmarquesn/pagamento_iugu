@@ -10,6 +10,7 @@ use Iugu\Endpoints\Charges;
 use Iugu\Endpoints\Invoices;
 use Iugu\Endpoints\PaymentToken;
 use Iugu\Endpoints\Plans;
+use Iugu\Endpoints\Subscriptions;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException as ClientException;
 use Iugu\Exceptions\InvalidJsonException;
@@ -62,6 +63,11 @@ class Client
     private $plans;
 
     /**
+     * @var \Iugu\Endpoints\Subscriptions
+     */
+    private $subscriptions;
+
+    /**
      * @param string $apiKey
      * @param array|null $extras
      */
@@ -89,6 +95,7 @@ class Client
         $this->paymentToken = new PaymentToken($this);
         $this->charges = new Charges($this);
         $this->plans = new Plans($this);
+        $this->subscriptions = new Subscriptions($this);
     }
 
     /**
@@ -197,5 +204,13 @@ class Client
     public function plans()
     {
         return $this->plans;
+    }
+
+    /**
+     * @return \Iugu\Endpoints\Plans
+     */
+    public function subscriptions()
+    {
+        return $this->subscriptions;
     }
 }
