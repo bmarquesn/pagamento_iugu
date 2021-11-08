@@ -71,7 +71,7 @@ $plan = $iugu->plans()->get([
             <p><a href="plans.php" class="btn btn-default">Voltar</a></p>
             <hr />
         </div>
-        <script src="assets/js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+        <script src="assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
         <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script type="text/javascript">
